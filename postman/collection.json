@@ -1,0 +1,89 @@
+{
+  "info": {
+    "name": "Intern Task App API",
+    "_postman_id": "10001",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User Signup",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5000/api/auth/signup",
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"name\": \"Test User\", \"email\": \"test@mail.com\", \"password\": \"123456\" }"
+        }
+      }
+    },
+    {
+      "name": "User Login",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5000/api/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"email\": \"test@mail.com\", \"password\": \"123456\" }"
+        }
+      }
+    },
+    {
+      "name": "Fetch Profile",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5000/api/auth/profile",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ]
+      }
+    },
+    {
+      "name": "Create Task",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:5000/api/tasks",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"title\": \"Sample Task\", \"description\": \"Test task\", \"priority\": \"High\", \"due_date\": \"2025-12-31\" }"
+        }
+      }
+    },
+    {
+      "name": "Fetch Tasks",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5000/api/tasks",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ]
+      }
+    },
+    {
+      "name": "Update Task",
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:5000/api/tasks/1",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"title\": \"Updated Task\", \"description\": \"Edited\", \"status\": \"Completed\", \"priority\": \"Low\" }"
+        }
+      }
+    },
+    {
+      "name": "Delete Task",
+      "request": {
+        "method": "DELETE",
+        "url": "http://localhost:5000/api/tasks/1",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ]
+      }
+    }
+  ]
+}
